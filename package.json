@@ -1,11 +1,11 @@
 {
-  "homepage": "http//:ace-aryal.github.io/Currency-Converter-React",
+  "homepage": "http//:Ace-Aryal.github.io/Currency-Converter-React",
   "name": "vite-react-starter",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy" : "gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
