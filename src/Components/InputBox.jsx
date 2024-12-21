@@ -12,7 +12,13 @@ function InputBox({
   className = '',
 }) {
   const amountInputId = useId()
+  const [selectCurrency, setSelectCurrency] = useState(currencySelect)
 
+  function handleCurrencyChange(e) {
+    const { target } = e
+
+    setSelectCurrency(target.value)
+  }
   return (
     <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
       <div className="w-1/2">
@@ -36,10 +42,14 @@ function InputBox({
         <select
           className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
           disabled={currencyDisabled}
-          value={currencySelect}
-          onChange={onCurrencyChange}
+          value={selectCurrency}
+          onChange={e => {
+            handleCurrencyChange(e)
+            onCurrencyChange(selectCurrency)
+          }}
         >
           {currencyOptions.map(currency => {
+            currency
             return (
               <option
                 key={currency} // for smooth render

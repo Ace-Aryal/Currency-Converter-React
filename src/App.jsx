@@ -11,11 +11,10 @@ function App() {
   const [to, setTo] = useState('npr')
 
   const currencyInfo = Currency(from)
-  console.log(currencyInfo)
 
   const options = Object.keys(currencyInfo)
   const convert = () => {
-    setConvertedAmount(amount * currencyInfo[to])
+    setConvertedAmount((amount * currencyInfo[to]).toFixed(2))
   }
   const swapMethod = () => {
     setFrom(to)
@@ -27,7 +26,7 @@ function App() {
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url('')`,
+        backgroundImage: `url('https://images.pexels.com/photos/4651145/pexels-photo-4651145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
       }}
     >
       <div className="w-full">
@@ -43,7 +42,7 @@ function App() {
                 label="From"
                 amount={amount}
                 currencyOptions={options}
-                onCurrencyChange={currency => setAmount(amount)}
+                onCurrencyChange={currency => setFrom(currency)}
                 onAmountChange={amt => setAmount(amt)}
                 currencySelect={from}
               />
@@ -65,9 +64,10 @@ function App() {
                 label="To"
                 amount={convertedAmount}
                 currencyOptions={options}
-                onCurrencyChange={currency => setAmount(amount)}
+                onCurrencyChange={currency => setTo(currency)}
                 currencySelect={to}
                 onAmountChange={amt => setConvertedAmount(amt)}
+                amountDisabled={true}
               />
             </div>
             <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
